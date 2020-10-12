@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <h2 class="form-title">{{formTitle}}</h2>
+    </div>
+  </div>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+  <hr />
+  <div *ngIf= 'userComponents'>
+  <div *ngIf='!expandedTree'>
+    <button ejs-button (click)="expandAll()" class="btn btn-link"><i class="fa fa-arrow-circle-down"></i>
+      Expand</button>
+  </div>
+  <div *ngIf='expandedTree'>
+    <button ejs-button (click)="collapseAll()" class="btn btn-link"><i
+        class="fa fa-arrow-circle-up"></i>Collapse</button>
+  </div>
+</div>
+  <div id='treeparent'>
+    <ejs-treeview #componentsTree [fields]="treeFields" class="tree-structure" [allowDragAndDrop]='allowDragAndDrop'
+      [showCheckBox]='showCheckBox' [autoCheck]=false (nodeChecking)='onNodeChecking($event)'
+      (created)='selectComponent()' (nodeDragStop)='onDragStop($event)' (nodeDragging)='onNodeDrag($event)'
+      (nodeDragging)="onNodeDragging($event)">
+    </ejs-treeview>
+  </div>
+
+</div>

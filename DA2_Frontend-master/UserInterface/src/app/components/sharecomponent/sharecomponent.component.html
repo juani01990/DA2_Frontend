@@ -1,0 +1,58 @@
+<app-master-page></app-master-page>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="form-title">Share Files & Folders</h2>
+        </div>
+        <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i
+                    class="fa fa-arrow-left"></i> Return</button>
+        </div>
+    </div>
+    <hr />
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+    <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+    <div class="row">
+        <div class="folder-structure col-4">
+            <app-generictree [mode]="'InsertComponent'" (onSelectValue)='selectValue($event)'></app-generictree>
+        </div>
+        <div class="col-8">
+            <div *ngIf="friends">
+                <div *ngIf="friends.length > 0">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="icons-column"></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">UserName</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor='let friend of friends | paginate: { itemsPerPage: 10, currentPage: p }'>
+                                <td class="grid-button-column">
+                                    <div class="icons-column-row text-center">
+                                        <div>
+                                            <button type="button" class="btn btn-success grid-button" placement="right"
+                                                ngbTooltip="Share File/Folder"
+                                                (click)="shareComponent(friend.id, friend.name)"><i
+                                                    class="fa fa-share-alt-square"></i></button>
+
+                                                </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">{{friend.name}}</td>
+                                <td class="align-middle">{{friend.lastname}}</td>
+                                <td class="align-middle">{{friend.username}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

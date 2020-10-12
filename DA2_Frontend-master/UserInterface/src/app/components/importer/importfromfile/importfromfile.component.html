@@ -1,0 +1,43 @@
+<app-master-page></app-master-page>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="form-title">Import data from file</h2>
+        </div>
+        <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i
+                    class="fa fa-arrow-left"></i> Return</button>
+        </div>
+    </div>
+    <hr />
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+    <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+    <div class="text-center">
+        <h3 class="lbl-importer"> You are going to import the data using {{importerName}}</h3>
+    </div>
+    <div class="row col-6">
+        <div class="col-5">
+            <h4>User to import the data</h4>
+        </div>
+        <div class="col-5">
+            <select [(ngModel)]="selectedUserID" class="form-control margin-field">
+                <option *ngFor="let u of users" [ngValue]="u.id">
+                    {{u.username + '( ' + u.name + ' ' + u.lastname + ')'}}
+                </option>
+            </select>
+        </div>
+        <div class="row  col-6 table-mt">
+            <div class="col-5">
+                <h4>Path of File</h4>
+            </div>
+            <div class="col-5 ">
+                <input type="text" class="form-control path-field" [(ngModel)]="filePath" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center table-mt table-mr">
+        <button class="btn btn-outline-secondary" (click)="onBack()">Cancel</button>
+        <button type="button" class="btn btn-primary font-weight-bold btn-import" (click)="importData()"><i
+                class="fa fa-upload"></i> Import</button>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<app-master-page></app-master-page>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <h2 class="form-title">{{formTitle}}</h2>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i class="fa fa-arrow-left"></i>   Return</button>
+    </div>
+  </div>
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+  <hr />
+  <div class="container container-mt">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <label class="font-weight-bold">First Name</label>
+          <div class="form-group">
+            <input type="text" formControlName="name" class="form-control" 
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="font-weight-bold">Last Name</label>
+            <input type="text" formControlName="lastname" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+            <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+              <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="font-weight-bold">Email</label>
+            <input type="text" formControlName="email" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.email">Email must be a valid email address. Example philips@gmail.com</div>
+            </div>
+          </div>
+          <label class="font-weight-bold">User Name</label>
+          <div class="form-group">
+            <input class="form-control" type="text" formControlName="username"
+              [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="font-weight-bold">Password</label>
+            <input type="text" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <div class="row-administrador-check">
+            <label class="font-weight-bold">Is Administrator?</label>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="isadmin">
+              <label class="custom-control-label not-active" for="customCheck1"></label>
+            </div>
+          </div>
+          <div class="form-group text-right">
+            <button class="btn btn-outline-secondary" (click)="onBack()">Cancel</button>
+            <button class="btn btn-success confirm-action"><i class="fa fa-save"></i>
+              Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

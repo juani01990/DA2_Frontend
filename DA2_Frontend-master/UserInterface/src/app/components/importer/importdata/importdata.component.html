@@ -1,0 +1,34 @@
+<app-master-page></app-master-page>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="form-title">Import Data</h2>
+        </div>
+        <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i
+                    class="fa fa-arrow-left"></i> Return</button>
+        </div>
+    </div>
+    <hr />
+    <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+    <div *ngIf="importersAvailable">
+        <div class="row">
+            <div class="row col-6">
+                <div class="col-4">
+                    <h4>Select importer</h4>
+                </div>
+                <div class="col-8">
+                    <select [(ngModel)]="selectedImporter" class="form-control input-search select-importer">
+                        <option *ngFor="let importer of importersAvailable" [ngValue]="importer">
+                            {{importer.name}}
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary font-weight-bold btn-search" (click)="chargeData()">Continue  <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .grid-button {
+    border-radius: 0px;
+  }
+  
+  .grid-button-column {
+    width: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  
+  .ngx-pagination li {
+    display: inline-block;
+    border-style: solid !important;
+    border-width: 1px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  .custom-control-label::before,
+  .custom-control-label::after {
+    width: 25px;
+    height: 25px;
+    margin-top: -4px;
+  }
+  
+  .btn-return {
+    margin-top: 23px;
+    margin-left: 50px;
+    font-weight: bold;
+  }
+  
+  .btn-adduser {
+    margin-bottom: 5px;
+    min-width: 150px;
+    font-weight: bold;
+  }
+  
+  .btn-cancel{
+    margin-bottom: 5px;
+    min-width: 150px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .icons-column-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+  }
+  
+  .input-search {
+    max-width: 350px;
+    margin-left: 10px;
+    margin-top: -7px;
+  }
+  
+  .filter-add-row {
+    margin-bottom: 10px;
+    margin-top: 25px;
+  }
+  
+  .form-title {
+    padding-top: 20px;
+  }
+  .row-addfriend{
+    margin-left: 0px;
+  }
+  .select-condition{
+    margin-top: 7px;
+    min-width: 350px;
+    margin-right: 10px;
+    
+  }

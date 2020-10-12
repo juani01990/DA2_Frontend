@@ -1,0 +1,33 @@
+<div class="container-login100">
+	<div class="wrap-login100">
+		<div *ngIf="errorMessage?.length > 0" class="alert alert-danger alert-error-login" role="alert">
+			<strong>{{errorMessage}}</strong>
+		</div>
+		<form class="login100-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<div class="text-center">
+				<img class="mb-4" src="./assets/imgs/drive.svg" alt="" class="login-img">
+				<h1 class="h3 mb-3 font-weight-bold">Two Drive</h1>
+			</div>
+			<label class="font-weight-bold">User Name</label>
+			<div class="form-group">
+				<input class="form-control" type="text" formControlName="username"
+					[ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+				<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+					<div *ngIf="f.username.errors.required">Username is required</div>
+				</div>
+			</div>
+			<label class="font-weight-bold">Password</label>
+			<div class="form-group">
+				<input class="form-control" type="password" formControlName="password"
+					[ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+				<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+					<div *ngIf="f.password.errors.required">Password is required</div>
+				</div>
+			</div>
+			<div class="container-login100-form-btn">
+				<button class="btn btn-primary login100-form-btn">Log in <span class="px-md-2"><i class="fa fa-sign-in"
+							aria-hidden="true"></i></span></button>
+			</div>
+		</form>
+	</div>
+</div>

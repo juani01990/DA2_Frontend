@@ -1,0 +1,42 @@
+<app-master-page></app-master-page>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <h2 class="form-title">{{formTitle}}</h2>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i
+          class="fa fa-arrow-left"></i> Return</button>
+    </div>
+  </div>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+  <hr />
+  <div class="container container-mt">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="editForm">
+          <label class="font-weight-bold">Name</label>
+          <div class="form-group">
+            <input type="text" formControlName="name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="font-weight-bold">Content</label>
+            <textarea class="form-control txt-content" rows="6" formControlName="content"></textarea>
+          </div>
+          <div class="form-group">
+            <div *ngIf="textFile">
+            <div *ngIf=" paramloggedUserID == textFile.ownerID">
+              <div class="folder-structure">
+                <label class="font-weight-bold tree-view-title">Parent Folder</label>
+                <div class="tree-view">
+                <app-generictree [mode]="'DisplayComponent'" [componentToUpdate]="paramTextFileID"></app-generictree>
+              </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

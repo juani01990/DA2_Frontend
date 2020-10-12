@@ -1,0 +1,71 @@
+<div class="container-masterpage">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img class="mb-4" src="./assets/imgs/drive.svg" alt="" class="navbar-image">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <div class="dropdown show">
+                    <a class="nav-item nav-link nav-item-font-size  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Folders
+                    </a>
+                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuLink">
+                        <h6 class="dropdown-header dropdown-header-text">Folders</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/folderlist']">Work with
+                            Folders</a>
+                    </div>
+                </div>
+                <div class="dropdown show">
+                    <a class="nav-item nav-link nav-item-font-size  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Files
+                    </a>
+                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuLink">
+                        <h6 class="dropdown-header dropdown-header-text">Text File</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/textfilelist']">Work with
+                            Text File</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header dropdown-header-text">HTML File</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/htmlfilelist']">Work with
+                            HTML</a>
+                    </div>
+                </div>    
+                    <a class="nav-item nav-link nav-item-font-size"  routerLinkActive="active" [routerLink]="['/sharedcomponentlist']" role="button" aria-haspopup="true" aria-expanded="false">
+                        Shared with me
+                    </a>
+                    <a class="nav-item nav-link nav-item-font-size"  routerLinkActive="active" [routerLink]="['/friendsList']" role="button"  aria-haspopup="true" aria-expanded="false">
+                        My friends
+                    </a>
+                <div class="dropdown show">
+                    <a *ngIf="LoggedUser?.isAdmin" class="nav-item nav-link nav-item-font-size  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Administration
+                    </a>
+                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuLink">
+                        <h6 class="dropdown-header dropdown-header-text">Import data</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/importer']">Import Data</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header dropdown-header-text">Users</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/userlist']">Work with
+                            Users</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header dropdown-header-text">Reports</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/top10report']">Top 10 user with more Files</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/modificationsbyuser']">Modifications by User over files between date range</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/modificationsoverfolders']">Modifications over Folders</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="nav-item-font-size">Welcome {{LoggedUser?.name}}</span><a class="nav-item nav-link nav-item-font-size" (click)="logOut()" placement="left" ngbTooltip="Log Out"><i
+                class="fa fa-sign-out fa-2x cursor" aria-hidden="true"></i></a>
+    </nav>
+</div>
+<ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>

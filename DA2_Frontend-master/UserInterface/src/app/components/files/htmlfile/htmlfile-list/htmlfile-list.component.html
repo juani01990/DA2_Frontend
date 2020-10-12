@@ -1,0 +1,79 @@
+<app-master-page></app-master-page>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="form-title">Work with HTML Files</h2>
+        </div>
+        <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-outline-secondary btn-return" (click)="onBack()"><i
+                    class="fa fa-arrow-left"></i> Return</button>
+        </div>
+    </div>
+    <hr />
+    <div class="container-fluid filter-add-row">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <h4>Filter by HTML File Name</h4>
+                    <input type="text" class="form-control input-search filter-field" [(ngModel)]="htmlNameToFilter" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success btn-addhtmlfile" placement="top" ngbTooltip="New htmlfile"
+                [routerLink]="['/htmlfile']"><i class="fa fa-plus" aria-hidden="true">
+                    <span class="font-weight-bold"> New Text File</span></i></button>
+        </div>
+    </div>
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+    <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+    <div *ngIf="htmlfiles">
+        <div *ngIf="htmlfiles?.length > 0">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="icons-column"></th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Creation Date</th>
+                        <th scope="col">Last Modification Date </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor='let htmlfile of htmlfiles | componentNameFilter: htmlNameToFilter | paginate: { itemsPerPage: 10, currentPage: p }'>
+                        <td class="grid-button-column">
+                            <div class="icons-column-row text-center">
+                                <div>
+                                    <button type="button" class="btn btn-secondary grid-button" placement="right"
+                                        ngbTooltip="View HTML File Content"
+                                        [routerLink]="['/htmlfileview', htmlfile.id]"><i class="fa fa-eye"></i></button>
+
+                                    <button type="button" class="btn btn-info grid-button" placement="top"
+                                        ngbTooltip="Edit HTML File" [routerLink]="['/htmlfile', htmlfile.id]"><i
+                                            class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-danger grid-button" placement="top"
+                                        ngbTooltip="Delete HTML File"
+                                        (click)="deleteHTMLFile(htmlfile.name, htmlfile.id)"><i
+                                            class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="align-middle">{{htmlfile.name}}</td>
+                        <td class="align-middle">{{htmlfile.creationDate | date:'medium'}} </td>
+                        <td class="align-middle">{{htmlfile.modificationDate | date:'medium'}} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-right">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <div *ngIf="htmlfiles.length < 1">
+            <div class="text-center">
+                <h2>No HTML Files Added</h2>
+            </div>
+        </div>
+    </div>
+</div>

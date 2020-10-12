@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+.form-control.ng-touched.ng-invalid {
+    border-color: #dc3545;
+}
+
+.custom-control-input.ng-invalid.ng-touched+label.custom-control-label {
+    color: #dc3545;
+}
+
+.custom-control-input.ng-invalid.ng-touched+label.custom-control-label:before,
+.custom-control-input.ng-invalid.ng-touched+label.custom-control-label:after {
+    border-color: #dc3545;
+}
+
+.custom-control-input.ng-invalid.ng-touched:focus~label.custom-control-label:before {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25);
+}
+
+.form-title {
+    padding-top: 20px;
+}
+
+.confirm-action {
+    min-width: 150px;
+    margin-left: 10px;
+}
+
+.row-administrador-check {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-top: 20px;
+
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    width: 25px;
+    height: 25px;
+    margin-top: -4px;
+    margin-left: 5px;
+}
+
+.btn-return {
+    margin-top: 23px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.container-mt {
+    margin-top: 50px;
+
+}
+.folder-structure{
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 7px;
+    margin-top: -39px;
+    min-width: 569px;
+    margin-left: -14px;
+    padding-left: 6px;
+}
